@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 161: expected statement.
-    renpy.vibrate(0.5)
+File "game/script.rpy", line 218: invalid syntax
+                show Ded Mitrofan
                       ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Tue May 14 00:01:51 2024
+Tue May 14 01:00:43 2024
