@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 161: expected statement.
+    renpy.vibrate(0.5)
+                      ^
+
+Ren'Py Version: Ren'Py 8.2.1.24030407
+Tue May 14 00:01:51 2024
