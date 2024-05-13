@@ -1,0 +1,11 @@
+# no vscode files
+.vscode/
+
+# no saves
+saves/
+
+# no cache
+cache/
+
+# no logs
+log.txt
