@@ -37,11 +37,24 @@ image Polyana = "17.png"
 image Dyb = "18.png"
 image Kryzhka kosti = "19.png"
 image Konec1 = "20.png"
-
+# Музыка и звуки
+define audio.forest = "sounds/Forest.ogg"
+define audio.gym = "sounds/GYM.ogg"
+define audio.oak = "sounds/WiseOak.ogg"
+define audio.horror = "sounds/Horror.ogg"
+define audio.birds = "sounds/Birds.ogg"
+define audio.howl = "sounds/Howl.ogg"
+define audio.washing = "sounds/Washing.ogg"
+define audio.town = "sounds/Town.ogg"
+define audio.door = "sounds/Door.ogg"
+define audio.menu = "sounds/Menu.ogg"
+define audio.house = "sounds/House.ogg"
 
 label start:
 
     scene Zadnik lug
+
+    play music birds volume 0.8
 
     e "Палящее июньское солнце постепенно начинает скрываться за горизонтом, на небе становятся видны первые звёзды. "
 
@@ -70,6 +83,8 @@ label start:
     show Kolya at left
 
     k "Прости. Я споткнулся, а ты мне под руку попался."
+
+    play sound howl
 
     i "Вы слышали?"
 
@@ -138,6 +153,10 @@ label start:
     scene Izba
     e "Когда мы пришли, только в нашей избе ещё горел свет. Мы вошли внутрь."
 
+    play sound door
+    # play music house volume 0.35
+    stop music
+
     scene Stol v izbe
     e "Родители Коли и Оли уже накрывали на стол. Сегодня подавали: запечённые свиные рёбрышки, разогретые щи, и главное блюдо вечера – испечённые на сале блины со сметаной."
     show Olya at center
@@ -154,13 +173,17 @@ label start:
     e "Было тепло, но я не мог уснуть. Мне не давал покоя вой в лесу."
     e "Стоило мне повернуться на бок и открыть глаза…"
 
+    play sound horror
+
     scene Pugalka strashilka
     e "… как почти перед самым моим лицом предстал тёмный силуэт, с двумя огромными яркими глазами. "
     s "Илья, вставай!"
     $ renpy.vibrate(0.5)
     scene Gorodskaya izba vnytri
     show Sasha at center
+    stop sound
     e "Я проснулся у себя дома."
+
     e "Возле нар стояла Саша и хмуро смотрела на меня."
     s "Ты хоть сегодня на занятия пойдёшь?"
     i "Сколько сейчас?"
@@ -169,9 +192,13 @@ label start:
     e "Саша вышла из комнаты. Я наспех надел порты, натянул косоворотку и побежал к умывальнику."
 
     scene Ymivalnik
+    play sound washing
     e "Ополоснув лицо и прополоскав рот, я побежал ко входу в избу, где меня ждала Саша."
 
     scene Gorodskaya izba vhod
+
+    play music birds
+
     show Sasha
     s "Саша: Идём быстрее!"
 
@@ -187,6 +214,9 @@ label start:
     e "Раньше он был купцом, но дело своё оставил сыну и решил посвятить оставшуюся часть жизни приобщению молодых к здоровому образу жизни."
 
     scene Slavyanskaya kachalka
+
+    play music gym volume 0.4
+
     show Ded Mitrofan
     d "Ну здорово, юнец!"
     i "И здоровее видали! Как ты, дед Митрофан."
@@ -207,6 +237,9 @@ label start:
     e "Я закинул булыжник на плечо и начал толкать:"
     # Игра поднятие булыжника
     scene Lesnaya tropa 2
+
+    play music birds
+
     e "Тренировка пролетела незаметно. Я попрощался с Дедом Митрофаном и поплёлся домой."
     e "Я шёл по лесной тропе, как вдруг…"
     e "Из ниоткуда появился смуглый мужик в чёрном кафтане и диковинном головном уборе."
@@ -232,6 +265,7 @@ label start:
             scene Polyana
             e "Вскоре мы вышли на поляну. Посреди поляны рос могучий многовековой дуб, обвешенный огромной цепью, по которой неспешно прогуливался тощий облезлый чёрный кот. "
             scene Dyb
+            play music oak
             e "Под дубом сидело существо размером с двух дедов Митрофанов: кожа была белая, как береста, вся исписанная похабными словами. Телосложением существо было крепкое. "
             e "На бледном лице красовался огромный нос и два жёлтых глаза. Это лицо, изображавшее безумную улыбку, тут же направило взгляд в нашу сторону."
             show Leshiy
@@ -272,6 +306,7 @@ label start:
                     p "Хорошо!"
                     scene Lesnaya tropa 2
                     show Myzhik
+                    play music birds
                     e "Прохор вывел меня к тому месту, где мы с ним встретились поклонился, и, как только я моргнул, таинственным образом исчез."
                     scene Lesnaya tropa 2
                     e "Да уж, сегодня я много всего повидал. Кому скажу – не поверят. Леший, кажется чувствовал моё существо лучше меня: как только скрылся Прохор, я почувствовал, что меня ужасно клонит в сон."
@@ -284,6 +319,7 @@ label start:
                     show Myzhik at left
                     p "Хорошо!"
                     scene Lesnaya tropa 2
+                    play music birds
                     show Myzhik
                     e "Прохор вывел меня к тому месту, где мы с ним встретились, поклонился, и, как только я моргнул, таинственным образом исчез."
                     scene Lesnaya tropa 2
@@ -292,5 +328,7 @@ label start:
         "Не идти":
             e "В друг на меня накатила какая-то ужасная усталость. Я понял, что перетренировался сегодня и надо срочно возвращаться домой."
     scene Gorodskaya izba vnytri
+    play sound door
+    stop music
     e "Кое-как я выбрался из леса, еле-еле добрался до избы и сразу свалился на нары. Почти мгновенно меня окутал сон."
 
