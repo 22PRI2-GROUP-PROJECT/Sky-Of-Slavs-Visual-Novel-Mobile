@@ -750,7 +750,11 @@ label start:
             hide Leshiy Speaking
             show Leshiy at right
             i "Идёт."
-            show c8
+            show c8:
+                xalign 0.75
+                yalign 1.3
+                
+ 
             hide Leshiy
             show Leshiy Speaking at right
             l "Поздравляю!"
@@ -761,13 +765,21 @@ label start:
                     i "Я согласен."
                     $ player_roll = r()
                     if (player_roll == 1):
-                        show c5
+                        show c5:
+                            xalign 0.75
+                            yalign 1.3
                     if (player_roll == 2):
-                        show c9
+                        show c9:
+                            xalign 0.75
+                            yalign 1.3
                     if (player_roll == 3):
-                        show c8
+                        show c8:
+                            xalign 0.75
+                            yalign 1.3
                     if (player_roll == 4):
-                        show c12
+                        show c12:
+                            xalign 0.75
+                            yalign 1.3
                     if (player_roll < 3):
                         show Leshiy Speaking at right
                         l "Мои соболезнования!"

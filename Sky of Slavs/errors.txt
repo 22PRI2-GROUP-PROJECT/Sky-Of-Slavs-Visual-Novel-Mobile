@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 834: end of line expected.
-    with moveinleft layer 2
-                    ^
+File "game/script.rpy", line 755: expected statement.
+    xalign 0.75
+            ^
+
+File "game/script.rpy", line 756: expected statement.
+    yalign 1.0
+            ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Fri May 17 01:47:26 2024
+Fri May 17 02:13:57 2024
