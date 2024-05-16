@@ -464,6 +464,7 @@ label start:
     menu:
         "Влево":
             with vpunch
+            $ renpy.vibrate(0.5)
             e "Я рванул влево, и тут же споткнулся."
             e "Я снял повязку. Навернулся я несильно, но ладошку ободрал."
             show Olya Speaking at right
@@ -481,6 +482,8 @@ label start:
 
         "Вправо":
             e "Я прыгнул вправо, и тут же схватил кого-то. Это был Коля."
+            with vpunch
+            $ renpy.vibrate(0.5)
             show Kolya Speaking at left
             with moveinleft
             k "Но я только водил. Давай ещё раз."
@@ -770,6 +773,7 @@ label start:
                         l "Мои соболезнования!"
                         scene Dark
                         with vpunch
+                        $ renpy.vibrate(0.5)
                         e "Вдруг я потерял сознание."
                         window hide
                         pause
