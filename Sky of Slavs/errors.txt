@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 218: invalid syntax
-                show Ded Mitrofan
-                      ^
+File "game/script.rpy", line 834: end of line expected.
+    with moveinleft layer 2
+                    ^
 
 Ren'Py Version: Ren'Py 8.2.1.24030407
-Tue May 14 01:00:43 2024
+Fri May 17 01:47:26 2024

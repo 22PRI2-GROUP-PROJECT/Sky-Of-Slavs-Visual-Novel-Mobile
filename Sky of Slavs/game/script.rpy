@@ -1,4 +1,8 @@
-﻿# Определение персонажей игры
+﻿define slow_dissolve = Dissolve(1.0)
+define flashbulb = Fade(0.2, 0.0, 0.8, color='#fff')
+
+ 
+# Определение персонажей игры
 define e = Character('', color="#c8ffc8")
 define k = Character('Коля', color="#5b6908")
 define i = Character('Илья', color="#000000")
@@ -42,6 +46,50 @@ image c5 = "Cubes 5.png"
 image c8 = "Cubes 8.png"
 image c9 = "Cubes 9.png"
 image c12 = "Cubes 12.png"
+image Portal = "Portal.png"
+image Malenkaya Sasha Speaking:
+    "Malenkaya Sasha Speaking.png"
+    pause .5
+    "Malenkaya Sasha.png"
+    pause .5
+    repeat
+image Sasha Speaking:
+    "Vzroslaya Sasha Speaking.png"
+    pause .5
+    "Vzroslaya Sasha.png"
+    pause .5
+    repeat
+image Olya Speaking:
+    "Olya Speaking.png"
+    pause .5
+    "Olya.png"
+    pause .5
+    repeat
+image Kolya Speaking:
+    "Kolya Speaking.png"
+    pause .5
+    "Kolya.png"
+    pause .5
+    repeat
+image Ded Mitrofan Speaking:
+    "Ded Mitrofan Speaking.png"
+    pause .5
+    "Ded Mitrofan.png"
+    pause .5
+    repeat
+image Myzhik Speaking:
+    "Myzhik Speaking.png"
+    pause .5
+    "Myzhik.png"
+    pause .5
+    repeat
+image Leshiy Speaking:
+    "Leshiy Speaking.png"
+    pause .5
+    "Leshiy.png"
+    pause .5
+    repeat
+
 # Музыка и звуки
 define audio.forest = "sounds/Forest.ogg"
 define audio.gym = "sounds/GYM.ogg"
@@ -282,14 +330,24 @@ label play_pong:
     window show
 
 if _return == "Илья":
-    show Ded Mitrofan
+    show Ded Mitrofan Speaking at left
+    with moveinleft
     d "Справился-таки! Ай да юнец! Дай руку пожму!"
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan at left
     e "Я опустил камень на землю. И протянул руку деду Митрофану. Старик так сжал мою кисть, что я подумал, что он сейчас, как жернова, перемелет мне все кости."
+    hide Ded Mitrofan
+    show Ded Mitrofan Speaking at left
     d "Ну, ты знаешь, что делать дальше. Вон, там другой молодняк идёт, мне пора."
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan at left
     i "Хорошо!"
+    hide Ded Mitrofan 
+    with moveoutleft
     return
 else:
-    show Ded Mitrofan
+    show Ded Mitrofan at left
+    with moveinleft
     d "Хлипкие нынче молодцы! Ну и ладно, я не думал, что ты поднимешь, возьми камень поменьше и пробуй снова."
     $ renpy.jump("play_pong")  
 
@@ -321,75 +379,135 @@ label start:
     scene Ilustraciya Les
 
     e "Я уже начал терять сознание, как вдруг меня сбили с ног. Коля побежал на мой хлопок, споткнулся и упал, прихватив с собой меня. Эта неожиданность привела меня в чувства."
-
+    with vpunch
     scene Zadnik lug
-
+    with slow_dissolve
+    $ renpy.vibrate(0.5)
+    show Kolya Speaking at left
+    with moveinleft
+    k "Прости. Я споткнулся, а ты мне под руку попался."
+    hide Kolya Speaking
     show Kolya at left
 
-    k "Прости. Я споткнулся, а ты мне под руку попался."
-
     play sound howl
-
+    with hpunch
     i "Вы слышали?"
+    hide Kolya at left
+    with moveoutleft
+    
 
     scene Zadnik lug
 
-    show friends
+    with dissolve
 
+    show Kolya at center
+    with moveinbottom
+    show SashaM at left
+    with moveinleft
+    show Olya at right
+    with moveinright
     e "Все вопросительно на меня посмотрели."
-
+    hide Kolya at center
+    with moveoutbottom
+    hide SashaM at left 
+    with moveoutleft
+    hide Olya at right
+    with moveoutright
     scene Zadnik lug
-
-    show Olya at left
-
+    with dissolve
+    show Olya Speaking at left 
+    with moveinleft
     o "Что слышали?"
-
+    hide Olya Speaking
+    show Olya at left 
     i "Вой в лесу."
-
+    hide Olya
+    show Olya Speaking at left 
     o "Не было никакого воя. Может, ты плохо себя чувствуешь?"
-
+    hide Olya Speaking
+    show Olya at left 
     i "Сейчас я чувствую себя хорошо. Но только что…"
-
+    hide Olya
+    show Olya Speaking at left 
     o "Что?"
-
+    hide Olya Speaking
+    show Olya at left 
     i "Ничего."
 
-    show SashaM at center
+    show Malenkaya Sasha Speaking at center
+
+    with moveinleft
 
     s "В любом случае, теперь ты должен водить."
+    hide Malenkaya Sasha Speaking
+    show SashaM at center
 
     e "Действительно. Хоть и случайно, но Коля меня запятнал. И всё же, что это был за вой в лесу?"
-
+    hide SashaM
+    with moveoutright
+    hide Olya
+    with moveoutleft
     e "Во всяком случае, сейчас я на этот вопрос не отвечу. Мы продолжили. Мне завязали глаза, раскрутили, и сказали досчитать до двадцати. Настало время испытать свои силы в качестве воды в «жмурках»."
-
+    
+    with vpunch
+    $ renpy.vibrate(0.5)
     e "Со всех сторон послышались негромкие хлопки. Два, как мне показалось, ближайших хлопка раздавались с двух противоположных сторон. На чей же хлопок мне пойти?"
 
+    with hpunch
+    $ renpy.vibrate(0.5)
     scene Zadnik lug
+
+    
 
     e "Выберите направление, в котором хотите пойти."
     
     menu:
         "Влево":
+            with vpunch
             e "Я рванул влево, и тут же споткнулся."
             e "Я снял повязку. Навернулся я несильно, но ладошку ободрал."
-            show Olya at right
+            show Olya Speaking at right
+            with moveinright
             o "Не сильно болит?"
+            hide Olya Speaking
+            show Olya at right
             i "Немного."
+            hide Olya
+            show Olya Speaking at right
             o "Ладно, тогда идём домой, там всё и обработаем."
+            hide Olya Speaking
+            with moveoutleft
             e "И без этого уже пора было бы возвращаться. Все уже порядком наигрались, потому никто сильно не расстроился."
 
         "Вправо":
             e "Я прыгнул вправо, и тут же схватил кого-то. Это был Коля."
-            show Kolya at left
+            show Kolya Speaking at left
+            with moveinleft
             k "Но я только водил. Давай ещё раз."
+            hide Kolya Speaking
+            show Kolya at left
             i "Ладно, давай."
             e "Коля был редкостным плаксой, потому я и согласился. Мне бы и хотелось настоять на своём мнении, но я знал, что в таком случае он просто заревёт и откажется играть, после чего игра закончится, и мы пойдём домой."
             e "Но, к несчастью для Коли, и второй раз мной пойман был именно он."
+            hide Kolya
+            show Kolya Speaking at left
             k "Ты подглядываешь!"
+            hide Kolya Speaking
+            show Kolya at left
             i "Не подглядываю! Просто ты тормоз!"
+            hide Kolya 
+            show Kolya Speaking at left
             k "Я? Да сам ты тормоз!"
+            hide Kolya Speaking
+            show Kolya at left
             i "Если я тормоз и быстрее тебя, то кто ты?"
+            show Olya Speaking at right
+            with moveinright
             o "Прекратите! Раз вы так себя ведёте, мы идём домой."
+            hide Kolya
+            with moveoutright
+            hide Olya Speaking
+            with moveoutright
 
     scene Lesnaya tropa 1
     e "Мы шли с луга по заросшей тропинке, кругом уже ухали совы. В траве стрекотали кузнечики."
@@ -403,12 +521,18 @@ label start:
 
     scene Stol v izbe
     e "Родители Коли и Оли уже накрывали на стол. Сегодня подавали: запечённые свиные рёбрышки, разогретые щи, и главное блюдо вечера – испечённые на сале блины со сметаной."
-    show Olya at center
+    show Olya Speaking at center
+    with moveinleft
     o "Сначала мясо и щи, а потом блины!"
+    hide Olya Speaking
+    show Olya
     e "Пришлось поступить, как повелела Оля."
+    hide Olya 
+    with moveoutleft
     e "После ужина все стали готовиться ко сну."
 
     scene Dark
+    with slow_dissolve
     e "Мы с Сашей приехали в эту деревню на лето..."
     e "Жизнь здесь не остановилась, а, скорее, задремала."
 
@@ -420,19 +544,32 @@ label start:
     play sound horror
 
     scene Pugalka strashilka
+    
     e "… как почти перед самым моим лицом предстал тёмный силуэт, с двумя огромными яркими глазами. "
     s "Илья, вставай!"
+    with vpunch
     $ renpy.vibrate(0.5)
     scene Gorodskaya izba vnytri
+    with slow_dissolve
     show Sasha at center
+    with moveinbottom
     stop sound
     e "Я проснулся у себя дома."
-
     e "Возле нар стояла Саша и хмуро смотрела на меня."
+    hide Sasha
+    show Sasha Speaking
     s "Ты хоть сегодня на занятия пойдёшь?"
+    hide Sasha Speaking
+    show Sasha
     i "Сколько сейчас?"
+    hide Sasha
+    show Sasha Speaking
     s "Уже половина восьмого."
+    hide Sasha Speaking
+    show Sasha
     i "Вот же!"
+    hide Sasha
+    with moveoutleft
     e "Саша вышла из комнаты. Я наспех надел порты, натянул косоворотку и побежал к умывальнику."
 
     scene Ymivalnik
@@ -440,13 +577,17 @@ label start:
     e "Ополоснув лицо и прополоскав рот, я побежал к выходу, где меня ждала Саша."
 
     scene Gorodskaya izba vhod
-
+    with dissolve
     play music birds
 
     show Sasha
-    s "Саша: Идём быстрее!"
-
+    with moveinleft
+    s "Идём быстрее!"
+    hide Sasha 
+    with moveoutright
+    
     scene Ylica goroda
+    with flashbulb
     e "Мы направились в сторону академии. Это было лучшее учебное заведение во всём княжестве. В академии обучали грамоте, рассказывали о местных растениях и зверях, показывали, как готовить отвары из различных трав. "
     e "Юношей учили работе с различными инструментами и военному делу а девушек – шитью и прочим вещам, необходимым в быту. Простыми словами – академия готовила русичей ко взрослой жизни."
     e "К счастью, академия находилась не так уж и далеко, так что добрались мы вовремя. Сегодня у нас проходила лекция по травничеству."
@@ -458,25 +599,48 @@ label start:
     e "Раньше он был купцом, но дело своё оставил сыну и решил посвятить оставшуюся часть жизни приобщению молодых к здоровому образу жизни."
 
     scene Slavyanskaya kachalka
-
+    with slow_dissolve
     play music gym volume 0.4
 
-    show Ded Mitrofan
+    show Ded Mitrofan Speaking
+    with moveinbottom
     d "Ну здорово, юнец!"
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan
     i "И здоровее видали! Как ты, дед Митрофан?"
+    hide Ded Mitrofan
+    show Ded Mitrofan Speaking
     d "Как видишь, живее всех живых."
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan
     i "Смотрю, с каждым днём народу к тебе ходит всё больше и больше."
+    hide Ded Mitrofan
+    show Ded Mitrofan Speaking
     d "А тебе камней жалко?"
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan
     i "Чего их жалеть, камни эти? Но, думаю, площадку скоро придётся расширять."
+    hide Ded Mitrofan
+    show Ded Mitrofan Speaking
     d "Ничего, расширим, всем места хватит! Подсобишь, если понадобится?"
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan
     i "С радостью! Ну ладно, давай к делу. Что ты приготовил на сегодня?"
+    hide Ded Mitrofan
+    show Ded Mitrofan Speaking
     d "Сегодня я для тебя подготовил такую штуку."
-
+    hide Ded Mitrofan Speaking
+    with moveoutright
     scene Kamen podnyal Kamen
     e "Дед Митрофан взял булыжник, а затем подбросил его вверх ракеткой."
-    show Ded Mitrofan
+    show Ded Mitrofan Speaking at left
+    with moveinleft
     d "Будем друг другу булыжник кидать, кто пропустит удар, тот проиграл. Попробуешь?"
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan at left
     i "Попробую."
+    hide Ded Mitrofan Speaking
+    show Ded Mitrofan at left
     e "Это далеко не самый большой булыжник деда Митрофана, но лёгким его не назовёшь. Пуда четыре в нём точно будет."
     e "Я закинул булыжник на ракетку и игра началась:"
     call play_pong() from _call_play_pong
@@ -484,28 +648,52 @@ label start:
     
     scene Lesnaya tropa 2
 
+    with slow_dissolve
+
     play music birds
 
     e "Тренировка пролетела незаметно. Я попрощался с Дедом Митрофаном и поплёлся домой."
     e "Я шёл по лесной тропе, как вдруг…"
     e "Из ниоткуда появился смуглый мужик в чудной одежде и диковинном головном уборе."
-    show Myzhik
+    show Myzhik Speaking
+    with moveinbottom
     m "Слушай, друг милый, не хочешь заработать денег?"
+    hide Myzhik Speaking
+    show Myzhik
     i "И что нужно от меня?"
+    hide Myzhik
+    show Myzhik Speaking
     m "Да ничего особенного. Ты просто сыграешь с Лешим в игру. Выиграешь – он тебе втройне воздаст, проиграешь – ну, извиняй."
+    hide Myzhik Speaking
+    show Myzhik
     i "Какой ещё Леший? "
+    hide Myzhik
+    show Myzhik Speaking
     e "На вид деловой мужик, а чушь несёт, будто у него белая горячка."
     e "Мужик загадочно улыбнулся."
+    hide Myzhik
+    show Myzhik Speaking
     m "Самый настоящий Леший! В лесу который обитает. Только он не злой совсем, как о нём детям рассказывают."
+    hide Myzhik Speaking
+    show Myzhik
     i "И с чего мне тебе верить?"
+    hide Myzhik
+    show Myzhik Speaking
     m "Не хочешь – не верь. Я тебе сказал, а ты решай: идти или не идти."
+    hide Myzhik Speaking
+    show Myzhik
     e "Выглядит этот мужик весьма необычно для наших мест – я многих в городе знаю, а его вижу впервые. Хотя кажется он вполне приличным человеком. С одной стороны, меня мучает чувство опасности, с другой – от любопытства тоже никуда не денешься."
     e "Так что же мне делать?"
     menu:
         "Идти":
             show Myzhik
+            with moveinbottom
             i "Ладно, заинтересовал ты меня. Пойду, посмотрю, что там за Леший у вас водится."
+            hide Myzhik
+            show Myzhik Speaking
             m "Тогда ступай за мной!"
+            hide Myzhik Speaking
+            with moveoutright
             scene Lesnaya tropa 3
             e "Он повёл меня по тропинке, которую я раньше в этом лесу не встречал. Я часто хожу по этому лесу, а потому для меня было удивительно, что здесь есть места, о которых я не знаю."
             scene Polyana
@@ -514,28 +702,54 @@ label start:
             play music oak
             e "Под дубом сидело существо размером с двух дедов Митрофанов: кожа была белая, как береста, на груди были выцарапаны какие-то подобия портретов. Телосложением существо было крепкое. "
             e "На бледном лице красовался огромный нос и два жёлтых глаза. Это лицо, изображавшее безумную улыбку, тут же направило взгляд в нашу сторону."
-            show Leshiy
+            show Leshiy Speaking
+            with moveinbottom
             l "Смотрите-ка! У нас новый гость! Друг милый, подходи, давай сыграем!"
             scene Polyana
             e "По коже пробежал мороз, но бежать уже было поздно. Раньше я думал, что подобная нечисть – лишь выдумки, созданные для того, чтобы дети осторожнее были. Мы с мужиком подошли к дубу."
             scene Dyb
-            show Myzhik at left
-            m "Леший, развлеки молодца, как умеешь."
+            with dissolve
+            show Myzhik Speaking at left
+            with moveinleft
             show Leshiy at right
+            with moveinright
+            m "Леший, развлеки молодца, как умеешь."
+            hide Myzhik Speaking
+            show Myzhik at left
+            hide Leshiy
+            show Leshiy Speaking at right
             l "Не переживай, Прохор, развлеку я гостя, как надо!"
+            hide Myzhik
+            with moveoutleft
             l "Как тебя звать, друг милый?"
+            hide Leshiy Speaking
+            show Leshiy at right
             i "Ильёй меня звать."
+            hide Leshiy
+            show Leshiy Speaking at right
             l "Ильёй? Чудесное имя! Ну что же, на что сыграем?"
+            hide Leshiy Speaking
+            show Leshiy at right
             i "Ты правила сначала объясни, а потом играть будем."
             scene Kryzhka kosti
-            show Leshiy at right
+            with dissolve
+            show Leshiy Speaking at right
+            with moveinright
             l "Ай да малый! Ну слушай: вот кружка, в ней лежит две кости, у каждой кости шесть граней, у каждой грани по четыре равные стороны. "
             l "На каждой грани выделаны углубления: от одного до шести. Общее число соответствует общему числу углублений на гранях, которые будут смотреть кверху."
             l "Если пополам общее число делится нацело – твоя победа, нет – моя. Ставить можно всё, что захочешь: хоть кошку, хоть себя. Выиграешь – воздам втройне. А проиграешь – не обижайся."
+            hide Leshiy Speaking
+            show Leshiy at right
             i "Давай попробуем."
+            hide Leshiy
+            show Leshiy Speaking at right
             l "Ставка – один червонец."
+            hide Leshiy Speaking
+            show Leshiy at right
             i "Идёт."
             show c8
+            hide Leshiy
+            show Leshiy Speaking at right
             l "Поздравляю!"
             hide c8
             l "Следующая ставка – ты сам. Выиграешь – я тебе подарю верного слугу. Проиграешь – пеняй на себя."
@@ -552,12 +766,15 @@ label start:
                     if (player_roll == 4):
                         show c12
                     if (player_roll < 3):
+                        show Leshiy Speaking at right
                         l "Мои соболезнования!"
                         scene Dark
+                        with vpunch
                         e "Вдруг я потерял сознание."
                         window hide
                         pause
                         scene Konec1
+                        with flashbulb
                         e "Я очнулся в каком-то тёмном туннеле. Вдруг в глаза мне ударил ослепительно яркий свет."
                         e "Что-то в конце ужасно манило меня."
                         e "Я пошёл на свет, и..."
@@ -565,24 +782,65 @@ label start:
                     l "Ну что же! Поздравляю, жди завтра подарочек от меня, а пока всё: ступай домой, выспись отдохни."
                     l "Прохор, проводи молодца!"
                     scene Dyb
-                    show Myzhik at left
+                    with dissolve
+                    show Myzhik Speaking at left
+                    with moveinleft
                     p "Хорошо!"
+                    hide Leshiy
+                    with moveinright
+                    hide Myzhik Speaking
+                    with moveoutleft
                     scene Lesnaya tropa 2
-                    show Myzhik
-                    play music birds
-                    e "Прохор вывел меня к тому месту, где мы с ним встретились поклонился, и, как только я моргнул, таинственным образом исчез."
+                    with dissolve
+                    show Portal at right
+                    with flashbulb
+                    show Myzhik at left
+                    with moveinleft
+                    e "Прохор вывел меня к тому месту, где мы с ним встретились, поклонился, и, как только я моргнул, таинственным образом исчез."
+                    show Myzhik at right
+                    with moveinleft
+                    
+                    hide Myzhik 
+                    with flashbulb 
+                    hide Portal
+                    with flashbulb
+                    
                     scene Lesnaya tropa 2
                     e "Да уж, сегодня я много всего повидал. Кому скажу – не поверят. Леший, кажется чувствовал моё существо лучше меня: как только скрылся Прохор, я почувствовал, что меня ужасно клонит в сон."
                 "Не соглашаться":
+                    hide Leshiy speaking
+                    show Leshiy at right
                     i "Я не согласен."
+                    hide Leshiy
+                    show Leshiy Speaking at right
                     l "Что же! Ступай домой, выспись отдохни. До новых встреч!"
                     l "Прохор, проводи молодца!"
-                    show Myzhik at left
+                    hide Leshiy speaking
+                    show Leshiy at right
+                    show Myzhik Speaking at left
+                    with moveinleft
                     p "Хорошо!"
+                    hide Myzhik Speaking
+                    with moveoutleft
                     scene Lesnaya tropa 2
+                    with dissolve
                     play music birds
-                    show Myzhik
+                    
+                    show Portal at right
+                    with flashbulb
+                    show Myzhik at left
+                    with moveinleft
                     e "Прохор вывел меня к тому месту, где мы с ним встретились, поклонился, и, как только я моргнул, таинственным образом исчез."
+                    show Myzhik at right 
+                    with moveinleft 
+                    
+                    hide Myzhik 
+                    with flashbulb 
+                    hide Portal
+                    with flashbulb
+                    
+                    
+                    
                     scene Lesnaya tropa 2
                     e "Да уж, сегодня я много всего повидал. Кому скажу – не поверят. Леший, кажется чувствовал моё существо лучше меня: как только скрылся Прохор, я почувствовал, что меня ужасно клонит в сон."
 

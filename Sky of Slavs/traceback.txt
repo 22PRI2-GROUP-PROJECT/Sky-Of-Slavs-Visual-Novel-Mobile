@@ -1,40 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 280, in script
-    play music birds volume 0.8
-  File "renpy/common/000statements.rpy", line 124, in execute_play_music
-    renpy.music.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 33, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
-  File "game/script.rpy", line 280, in <module>
-    play music birds volume 0.8
-NameError: name 'birds' is not defined
+  File "game/script.rpy", line 729, in script
+    show Leshiy speaking at right
+Exception: Image 'Leshiy' does not accept attributes 'speaking'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 280, in script
-    play music birds volume 0.8
-  File "G:\renpy-8.2.1-sdk\renpy\ast.py", line 1968, in execute
-    self.call("execute")
-  File "G:\renpy-8.2.1-sdk\renpy\ast.py", line 1950, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "G:\renpy-8.2.1-sdk\renpy\statements.py", line 349, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 124, in execute_play_music
-    renpy.music.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 33, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
-  File "G:\renpy-8.2.1-sdk\renpy\python.py", line 1209, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "G:\renpy-8.2.1-sdk\renpy\python.py", line 1202, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 280, in <module>
-    play music birds volume 0.8
-NameError: name 'birds' is not defined
+  File "game/script.rpy", line 729, in script
+    show Leshiy speaking at right
+  File "G:\renpy-8.2.1-sdk\renpy\ast.py", line 1113, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "G:\renpy-8.2.1-sdk\renpy\ast.py", line 1076, in show_imspec
+    renpy.config.show(name,
+  File "G:\renpy-8.2.1-sdk\renpy\exports.py", line 739, in show
+    if not base.find_target() and renpy.config.missing_show:
+  File "G:\renpy-8.2.1-sdk\renpy\display\image.py", line 421, in find_target
+    self.target = target._duplicate(a)
+  File "G:\renpy-8.2.1-sdk\renpy\display\displayable.py", line 246, in _duplicate
+    args.extraneous()
+  File "G:\renpy-8.2.1-sdk\renpy\display\displayable.py", line 109, in extraneous
+    raise Exception("Image '{}' does not accept attributes '{}'.".format(
+Exception: Image 'Leshiy' does not accept attributes 'speaking'.
 
 Windows-10-10.0.17763 AMD64
 Ren'Py 8.2.1.24030407
-Sky of Slavs 1.0
-Tue May 14 02:57:40 2024
+SlavSky 1.0
+Fri May 17 01:00:47 2024
