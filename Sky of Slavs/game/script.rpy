@@ -102,7 +102,14 @@ define audio.town = "sounds/Town.ogg"
 define audio.door = "sounds/Door.ogg"
 define audio.menu = "sounds/Menu.ogg"
 define audio.house = "sounds/House.ogg"
-
+define audio.dice = "sounds/Dice.mp3"
+define audio.claps = "sounds/Claps.mp3"
+define audio.claps1 = "sounds/Claps1.mp3"
+define audio.failing = "sounds/Failing.mp3"
+define audio.portaling = "sounds/Portaling.ogg"
+define audio.jeans = "sounds/Jeans.mp3"
+define audio.bushes = "sounds/Bushes.mp3"
+define audio.bushes1 = "sounds/Bushes1.mp3"
 init python:
     class PongDisplayable(renpy.Displayable):
 
@@ -380,6 +387,7 @@ label start:
 
     e "Я уже начал терять сознание, как вдруг меня сбили с ног. Коля побежал на мой хлопок, споткнулся и упал, прихватив с собой меня. Эта неожиданность привела меня в чувства."
     with vpunch
+    play sound failing volume 0.5
     scene Zadnik lug
     with slow_dissolve
     $ renpy.vibrate(0.5)
@@ -451,10 +459,11 @@ label start:
     
     with vpunch
     $ renpy.vibrate(0.5)
+    play sound claps volume 0.5
+    play sound claps1 volume 0.5
     e "Со всех сторон послышались негромкие хлопки. Два, как мне показалось, ближайших хлопка раздавались с двух противоположных сторон. На чей же хлопок мне пойти?"
-
-    with hpunch
-    $ renpy.vibrate(0.5)
+    
+    
     scene Zadnik lug
 
     
@@ -465,6 +474,7 @@ label start:
         "Влево":
             with vpunch
             $ renpy.vibrate(0.5)
+            play sound bushes
             e "Я рванул влево, и тут же споткнулся."
             e "Я снял повязку. Навернулся я несильно, но ладошку ободрал."
             show Olya Speaking at right
@@ -573,6 +583,7 @@ label start:
     i "Вот же!"
     hide Sasha
     with moveoutleft
+    play sound jeans
     e "Саша вышла из комнаты. Я наспех надел порты, натянул косоворотку и побежал к умывальнику."
 
     scene Ymivalnik
@@ -657,7 +668,9 @@ label start:
 
     e "Тренировка пролетела незаметно. Я попрощался с Дедом Митрофаном и поплёлся домой."
     e "Я шёл по лесной тропе, как вдруг…"
+    play sound portaling
     e "Из ниоткуда появился смуглый мужик в чудной одежде и диковинном головном уборе."
+    play sound bushes1 volume 0.5
     show Myzhik Speaking
     with moveinbottom
     m "Слушай, друг милый, не хочешь заработать денег?"
@@ -753,6 +766,7 @@ label start:
             show c8:
                 xalign 0.75
                 yalign 1.3
+            play sound dice volume 0.5
                 
  
             hide Leshiy
@@ -768,18 +782,22 @@ label start:
                         show c5:
                             xalign 0.75
                             yalign 1.3
+                        play sound dice volume 0.5
                     if (player_roll == 2):
                         show c9:
                             xalign 0.75
                             yalign 1.3
+                        play sound dice volume 0.5
                     if (player_roll == 3):
                         show c8:
                             xalign 0.75
                             yalign 1.3
+                        play sound dice volume 0.5
                     if (player_roll == 4):
                         show c12:
                             xalign 0.75
                             yalign 1.3
+                        play sound dice volume 0.5
                     if (player_roll < 3):
                         show Leshiy Speaking at right
                         l "Мои соболезнования!"
@@ -809,7 +827,9 @@ label start:
                     scene Lesnaya tropa 2
                     with dissolve
                     show Portal at right
+                    play sound portaling
                     with flashbulb
+                    
                     show Myzhik at left
                     with moveinleft
                     e "Прохор вывел меня к тому месту, где мы с ним встретились, поклонился, и, как только я моргнул, таинственным образом исчез."
@@ -817,8 +837,11 @@ label start:
                     with moveinleft
                     
                     hide Myzhik 
-                    with flashbulb 
+                    play sound portaling 
+                    with flashbulb
+                    
                     hide Portal
+                    play sound portaling
                     with flashbulb
                     
                     scene Lesnaya tropa 2
@@ -843,7 +866,9 @@ label start:
                     play music birds
                     
                     show Portal at right
+                    play sound portaling
                     with flashbulb
+                    
                     show Myzhik at left
                     with moveinleft
                     e "Прохор вывел меня к тому месту, где мы с ним встретились, поклонился, и, как только я моргнул, таинственным образом исчез."
@@ -851,8 +876,11 @@ label start:
                     with moveinleft 
                     
                     hide Myzhik 
+                    play sound portaling
                     with flashbulb 
+                     
                     hide Portal
+                    play sound portaling
                     with flashbulb
                     
                     
