@@ -18,12 +18,12 @@ define config.name = _("SlavSky")
 ## Определяет, показывать ли заголовок, данный выше, на экране главного меню.
 ## Установите на False, чтобы спрятать заголовок.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## Версия игры.
 
-define config.version = "1.0"
+define config.version = "Demo"
 
 
 ## Текст, помещённый в экран "Об игре". Поместите текст между тройными скобками.
@@ -62,7 +62,7 @@ define config.has_voice = True
 ## проигрываться в главном меню. Этот файл продолжит проигрываться во время
 ## игры, если не будет остановлен, или не начнёт проигрываться другой аудиофайл.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "main_menu_theme.ogg"
 
 
 ## Переходы ####################################################################
@@ -151,7 +151,7 @@ define config.save_directory = "SlavSky-1715636148"
 ##
 ## Иконка, показываемая на панели задач или на dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/window_icon.ico"
 
 
 ## Настройка Дистрибутива ######################################################
