@@ -339,7 +339,7 @@ label play_pong:
 if _return == "Илья":
     show Ded Mitrofan Speaking at left
     with moveinleft
-    d "Справился-таки! Ай да юнец! Дай руку пожму!"
+    d "Справился-таки! Ай да юнец! Наш слоняра! Дай руку пожму!"
     hide Ded Mitrofan Speaking
     show Ded Mitrofan at left
     e "Я опустил камень на землю. И протянул руку деду Митрофану. Старик так сжал мою кисть, что я подумал, что он сейчас, как жернова, перемелет мне все кости."
